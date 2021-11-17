@@ -1,6 +1,19 @@
 // Assignment code here
+var buttonEl = document.querySelector("#generate");
+var passwordEl = document.querySelector("#password")
+var passwordLength = window.prompt("How long do you want your password?")
+
+// buttonEl.addEventListener("click", function() 
+// { window.prompt();
+// });
+
+var promptPasswordLength = window.prompt("How long do you want your password?");
 
 
+
+
+// given code below //
+// given code below //
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
