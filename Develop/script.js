@@ -41,7 +41,7 @@ function chooseNumber() {
   if (passwordLength >= 8 && passwordLength <= 128) {
     //passwordLength = number user entered
     passwordLength = passwordLength
-    generatePassword() //calling the last function
+    combineArray() //calling the combineArray function
   }
   
   //if they don't enter valid answer
@@ -61,7 +61,6 @@ function chooseNumber() {
     window.alert("Please choose a number lower than 128.");
     return chooseNumber();
   }
-
 };
 
 // FIRST PROMPT
@@ -88,78 +87,46 @@ generateBtn.addEventListener("click", specialOrReg);
       specialChar = ['!', '”', '#', '$', '%', '&', '(', ')', '*', '+', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '{', '}', '|', '~' ];
       askPasswordCase(); //calling passwordCase function
     }
-};
+  };
 
 
-// combine all arrays to make one big array
-function combineArray() {
-  var combinedArray = [].concat(specialChar, passwordCase);
-  console.log(combinedArray);
+function generatePassword() {
 
-  function shuffleCombinedArray(array) {
-    var curId = array.length;
-    while (0 !== curID) {
-      var randID = Math.floor(Math.random() * curId);
-      curId -= 1;
-      var tmp = array[curId];
-      array[curId] = array[randId];
-      array[randId] = tmp;
+  // combine all arrays to make one big array
+  function combineArray() {
+    var combinedArray = [].concat(specialChar, passwordCase);
+
+    //declaring shuffleArray function
+    function shuffleArray(arr) {
+      arr.sort(() => Math.random() - 0.5);
     }
-  return array;
+
+    //calling shuffleArray function to shuffle combinedArray
+    var arr = combinedArray
+    shuffleArray(arr);
+    console.log(arr)
+    console.log("here is the new array?" + shuffleCombinedArray);
   }
-  
-  //shuffle all array items
-  var arr = combinedArray
-  arr = shuffleArray(arr);
-  console.log(arr);
 }
 
-// function generatePassword() {
-//   //tell computer to only pick numChar amount of characters?
-//   combinedArray.size = 3; //change 3 to passwordLength
-
-  
 //   return
 // }
-
-
-
-//function to set
 
 
 //function to generate password
 // // var password = {
 // //   passwordLength: getPasswordLength()
 //    console.log("here's the password length")
-
 // }
 
 
-
-
-// function writePassword () {
-  
-
-
-
-
-
-
-
-
-
-
+// function writePassword() {}
 
 
 // // // Write password to the #password input
 
-// // function writePassword() {
-// //   var password = generatePassword();
-// //   var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-// //   passwordText.value = password;
-
-// // }
-
-// // // Add event listener to generate button
-// // generateBtn.addEventListener("click", writePassword);
+//   passwordText.value = password;} //
