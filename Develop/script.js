@@ -1,4 +1,3 @@
-// Assignment code here
 var generateBtn = document.querySelector("#generate"); //from starter code
 var passwordEl = document.querySelector("#password"); //will be finished password?
 
@@ -69,7 +68,7 @@ function chooseNumber() {
     //function to generate password
     generatePassword();
     function generatePassword() {
-      const newArray = [].concat(specialChar, passwordCase);
+      const newArray = [].concat(specialChar, numericChar, passwordCase);
       const chooseRandom = (newArray, num = 1) => {
         const res = [];
         for(let i = 0; i < num; ){
@@ -82,19 +81,45 @@ function chooseNumber() {
         };
         return res;
       };
-      //picks passwordLength amount of characters from new array.
-      // console.log(chooseRandom(newArray, passwordLength));
 
       // Write generated password to the #password input
         writePassword();
         function writePassword() {
+          //password = result of this function which picks passwordLength amount of characters from new array.
           var password = (chooseRandom(newArray, passwordLength));
           var passwordText = document.querySelector("#password");
-          passwordText.value = password.join(""); //.join("") removes commas bw array items
+          passwordText.value = password.join(""); //.join("") removes commas bw array
         }
     };
   };
 };
+
+
+  //SECOND PROMPT
+  //function to say if they want numbers
+  function askNumbers() {
+    var promptNumbers = window.prompt("Do you want your password to include numbers?");
+    
+    //if they don't enter valid answer
+    if (promptNumbers === "" || promptNumbers === null) {
+      window.alert("Please provide a valid answer.");
+      return askNumbers();
+    }
+
+    //convert user's response to lowercase
+    promptNumbers = promptNumbers.toLowerCase();
+
+    if (promptNumbers === "no") {
+      numericChar = [""];
+      askPasswordCase(); //calling passwordCase function
+    }
+  
+    if (promptNumbers === "yes") {
+      numericChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+      askPasswordCase(); //calling passwordCase function
+    }
+  };
+
 
 // FIRST PROMPT
 generateBtn.addEventListener("click", specialOrReg);
@@ -113,24 +138,12 @@ generateBtn.addEventListener("click", specialOrReg);
 
     if (promptCharacters === "no") {
       specialChar = [""];
-      askPasswordCase(); //calling passwordCase function
+      askNumbers(); //calling askNumbers function
     }
   
     if (promptCharacters === "yes") {
       specialChar = ['!', '”', '#', '$', '%', '&', '(', ')', '*', '+', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '{', '}', '|', '~' ];
-      askPasswordCase(); //calling passwordCase function
+      askNumbers(); //calling askNumbers function
     }
   };
-
-    // //declaring shuffleArray function
-    // function shuffleArray(arr) {
-    //   arr.sort(() => Math.random() - 0.5);
-    // }
-  
-    // //calling shuffleArray function to shuffle newArray
-    // var shuffledArr = newArray
-    // shuffleArray(newArray);
-    // console.log("here is the new array:" + shuffledArr);
-    // generatePassword(); //calling generatePassword function
-  // }
 
