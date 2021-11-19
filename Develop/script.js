@@ -2,8 +2,6 @@
 var generateBtn = document.querySelector("#generate"); //from starter code
 var passwordEl = document.querySelector("#password"); //will be finished password?
 
-
-
 //declaring function to choose lowercase, uppercase, or both
 var askPasswordCase = function() {
   var promptCase = window.prompt('Would you like only lowercase letters, only uppercase letters, or both? Type "lower", "upper", or "both".');
@@ -41,7 +39,7 @@ function chooseNumber() {
   if (passwordLength >= 8 && passwordLength <= 128) {
     //passwordLength = number user entered
     passwordLength = passwordLength
-    combineArray() //calling the combineArray function
+    combineArray(); //calling the combineArray function
   }
   
   //if they don't enter valid answer
@@ -89,25 +87,24 @@ generateBtn.addEventListener("click", specialOrReg);
     }
   };
 
-
-function generatePassword() {
-
   // combine all arrays to make one big array
   function combineArray() {
     var combinedArray = [].concat(specialChar, passwordCase);
-
+  
     //declaring shuffleArray function
     function shuffleArray(arr) {
       arr.sort(() => Math.random() - 0.5);
     }
-
+  
     //calling shuffleArray function to shuffle combinedArray
     var arr = combinedArray
     shuffleArray(arr);
     console.log(arr)
-    console.log("here is the new array?" + shuffleCombinedArray);
+    // console.log("here is the new array?" + shuffleCombinedArray);
   }
-}
+  //slice array
+
+function generatePassword() {}
 
 //   return
 // }
