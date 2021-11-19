@@ -2,6 +2,8 @@
 var generateBtn = document.querySelector("#generate"); //from starter code
 var passwordEl = document.querySelector("#password"); //will be finished password?
 
+
+
 //declaring function to choose lowercase, uppercase, or both
 var askPasswordCase = function() {
   var promptCase = window.prompt('Would you like only lowercase letters, only uppercase letters, or both? Type "lower", "upper", or "both".');
@@ -80,8 +82,16 @@ function chooseNumber() {
         };
         return res;
       };
+      //picks passwordLength amount of characters from new array.
+      // console.log(chooseRandom(newArray, passwordLength));
 
-      console.log(chooseRandom(newArray, passwordLength));
+      // Write generated password to the #password input
+        writePassword();
+        function writePassword() {
+          var password = (chooseRandom(newArray, passwordLength));
+          var passwordText = document.querySelector("#password");
+          passwordText.value = password.join(""); //.join("") removes commas bw array items
+        }
     };
   };
 };
@@ -124,26 +134,3 @@ generateBtn.addEventListener("click", specialOrReg);
     // generatePassword(); //calling generatePassword function
   // }
 
-//took out const. ? idk
-
-//   return
-// }
-
-
-//function to generate password
-// // var password = {
-// //   passwordLength: getPasswordLength()
-//    console.log("here's the password length")
-// }
-
-
-// function writePassword() {}
-
-
-// // // Write password to the #password input
-
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;} //
