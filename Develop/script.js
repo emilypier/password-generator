@@ -33,14 +33,8 @@ var askPasswordCase = function() {
 
 //declaring function to choose number of characters in password
 function chooseNumber() {
+  //makes user's answer a variable
   var passwordLength = window.prompt("How many characters do you want your password to be? Choose a number between 8 and 128.");
-
-  //if they type number between 8-128
-  if (passwordLength >= 8 && passwordLength <= 128) {
-    //passwordLength = number user entered
-    passwordLength = passwordLength
-    combineArray(); //calling the combineArray function
-  }
   
   //if they don't enter valid answer
   if (passwordLength === "" || passwordLength === null) {
@@ -59,6 +53,37 @@ function chooseNumber() {
     window.alert("Please choose a number lower than 128.");
     return chooseNumber();
   }
+
+  //if they type number between 8-128
+  else (passwordLength >= 8 && passwordLength <= 128); {
+    //combine all arrays to make one big array
+    combinedArray();
+    function combinedArray() {
+      newArray = [].concat(specialChar, passwordCase);
+      // generatePassword(); //calling generatePassword function
+    }
+
+
+    //function to generate password
+    generatePassword();
+    function generatePassword() {
+      const newArray = [].concat(specialChar, passwordCase);
+      const chooseRandom = (newArray, num = 1) => {
+        const res = [];
+        for(let i = 0; i < num; ){
+          const random = Math.floor(Math.random() * newArray.length);
+          if(res.indexOf(newArray[random]) !== -1){
+              continue;
+          };
+          res.push(newArray[random]);
+          i++;
+        };
+        return res;
+      };
+
+      console.log(chooseRandom(newArray, passwordLength));
+    };
+  };
 };
 
 // FIRST PROMPT
@@ -87,24 +112,19 @@ generateBtn.addEventListener("click", specialOrReg);
     }
   };
 
-  // combine all arrays to make one big array
-  function combineArray() {
-    var combinedArray = [].concat(specialChar, passwordCase);
+    // //declaring shuffleArray function
+    // function shuffleArray(arr) {
+    //   arr.sort(() => Math.random() - 0.5);
+    // }
   
-    //declaring shuffleArray function
-    function shuffleArray(arr) {
-      arr.sort(() => Math.random() - 0.5);
-    }
-  
-    //calling shuffleArray function to shuffle combinedArray
-    var arr = combinedArray
-    shuffleArray(arr);
-    console.log(arr)
-    // console.log("here is the new array?" + shuffleCombinedArray);
-  }
-  //slice array
+    // //calling shuffleArray function to shuffle newArray
+    // var shuffledArr = newArray
+    // shuffleArray(newArray);
+    // console.log("here is the new array:" + shuffledArr);
+    // generatePassword(); //calling generatePassword function
+  // }
 
-function generatePassword() {}
+//took out const. ? idk
 
 //   return
 // }
