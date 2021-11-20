@@ -146,4 +146,3 @@ generateBtn.addEventListener("click", specialOrReg);
       askNumbers(); //calling askNumbers function
     }
   };
-
